@@ -427,3 +427,25 @@ Blockly.JavaScript['setupdisplay'] = function(block) {
   var code = '';
   return code;
 };
+
+Blockly.Blocks['wait'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(20);
+    this.appendValueInput("NAME")
+        .appendField("wait");
+    this.appendDummyInput()
+        .appendField("Seconds");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
+};
+
+Blockly.JavaScript['wait'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
