@@ -1,0 +1,42 @@
+body {
+  overflow: auto;
+  background-color: Peru   ;
+}
+
+.cities {
+    background-color:Sienna   ;
+	text-align:left;
+    color:white;
+    margin:20px;
+    padding:20px;
+
+}
+
+#graph {
+  position: absolute;
+  bottom: 25px;
+  height: 15px;
+  width: 100px;
+  border: 1px solid #ddd;
+}
+#graphValue {
+  height: 15px;
+  width: 0;
+  background-color: #0d0;
+  transition-property: width;
+  transition-duration: 1s;
+}
+
+#blockly {
+  position: relative;
+  height: 400px;
+  width: 50px;
+  overflow: visible;
+}
+
+#HeaderPicture {
+  background-color: SaddleBrown ;
+  text-align:center;
+  padding:10px; 
+}
+

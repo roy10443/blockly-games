@@ -1,0 +1,340 @@
+{namespace Royshen.soy}
+
+/**
+ * This is a Closure Template.
+ *
+ * To regenerate just English, run:
+ *   make pinball-en
+ *
+ * To regenerate all languages, run:
+ *   make languages
+ */
+
+/**
+ * Translated messages for use in JavaScript.
+ */
+{template .messages}
+  <div style="display: none">
+         
+  </div>
+{/template}
+
+
+
+/**
+ * Web page structure.
+ */
+{template .start}
+  {call .messages /}
+  <table id="header" width="100%">
+    <tr>
+      <td valign="bottom">
+        <h1>
+          {call BlocklyGames.soy.titleSpan}
+            {param appName}
+              {msg meaning="Games.royshen" desc="IBID"}初心者網頁{/msg}
+            {/param}
+          {/call}
+        </h1>
+      </td>	  
+      <td class="farSide">
+        <select id="languageMenu"></select>
+        &nbsp;
+        
+      </td>
+    </tr>
+  </table>
+
+  <div id="HeaderPicture">
+   <img src="royshen/images/imageHeader.gif" alt="Header" width="700" height="266" align="center">
+   <img src="royshen/images/RainbowHorse.gif" alt="Header" width="220" height="200" align="absbottom">
+  </div>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="cities">
+	<img src="royshen/images/scratch3.png" alt="Header" width="240" height="180" align="top ">
+	<h2>Scratch</h2>	
+	<p>Scratch 是一款適合小朋友學習程式語言的基礎軟體，</p>
+	<p>利用簡易的UI介面帶動整個程式活力，做出各種豐富的變化。</p>
+	</div> 
+
+   <div class="cities">
+    <img src="royshen/images/Blockly.jpg" alt="Header" width="240" height="180" align="top ">
+	<h2>Blockly</h2>
+    <p>以直覺的方式來教導程式設計的核心準則，鎖定5～12歲的兒童與程式設計的新手。</p>
+	<p>這是一個以網頁為基礎的圖像設計編輯工具，</p>
+	<p>使用者只要拖曳圖塊就能打造應用程式，</p>
+	<p>完全不需輸入文字，並可將Blockly程式匯出成JavaScript、Python或XML程式。</p>
+   </div>
+
+   
+  
+  {call .toolbox /}
+  <div id="blockly"> <h2>Blockly puzzle area:</h2> </div>
+  
+  
+  {call BlocklyGames.soy.dialog /}
+  
+  <div id="help" class="dialogHiddenContent">
+    <div style="padding-bottom: 0.7ex">
+      
+    </div>
+    <!-- <iframe width="400" height="128" border:1px solid #d4d4d4;" src="royshen/royshen_blockly.html?lang={$ij.lang}"></iframe> -->
+    {call BlocklyGames.soy.ok /}
+  </div>
+  <div id="executeProgram" class="dialogHiddenContent">
+    <div id="execute">
+    </div>
+    <div id="graph"><div id="graphValue"></div></div>
+    {call BlocklyGames.soy.ok /}
+  </div>
+{/template}
+
+
+/**
+ * Toolboxes for each level.
+ */
+{template .toolbox}
+<xml id="toolbox" style="display: none">
+  <category name="Pinball">
+    <category name="Channel">
+    <block type="a_ball_passes_channel"></block>
+    <block type="a_channel_is_full"></block>
+    <block type="balls_pass_channel"></block>
+    <block type="channels_are_full"></block>
+    <block type="if_a_ball_passes_channel"></block>
+    <block type="if_a_channel_is_full"></block>
+    </category>
+    <category name="LED">
+    <block type="set_channel_led"></block>
+    </category>
+    <category name="Display">
+    <block type="cleardisplay"></block>
+    <block type="cleardisplaydigit"></block>
+    <block type="setdisplay"></block>
+    <block type="setdisplaydigit"></block>
+    <block type="setdisplaytobinnumber"></block>
+    <block type="setdisplaytodecnumber"></block>
+    <block type="setdisplaytohexnumber"></block>
+    <block type="setupdisplay"></block>
+    </category>
+	<category name="Wait">
+	<block type="wait"></block>
+	</category>
+  </category>
+  <category name="Logic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+    <block type="logic_null"></block>
+    <block type="logic_ternary"></block>
+  </category>
+  <category name="Loops">
+    <block type="controls_repeat_ext">
+      <value name="TIMES">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+      <value name="BY">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="Math">
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="math_single"></block>
+    <block type="math_trig"></block>
+    <block type="math_constant"></block>
+    <block type="math_number_property"></block>
+    <block type="math_change">
+      <value name="DELTA">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_round"></block>
+    <block type="math_on_list"></block>
+    <block type="math_modulo"></block>
+    <block type="math_constrain">
+      <value name="LOW">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="HIGH">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_random_int">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_random_float"></block>
+  </category>
+  <category name="Text">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_append">
+      <value name="TEXT">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="text_length"></block>
+    <block type="text_isEmpty"></block>
+    <block type="text_indexOf">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">text</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_charAt">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">text</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_getSubstring">
+      <value name="STRING">
+        <block type="variables_get">
+          <field name="VAR">text</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_changeCase"></block>
+    <block type="text_trim"></block>
+    <block type="text_print"></block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category name="Lists">
+    <block type="lists_create_empty"></block>
+    <block type="lists_create_with"></block>
+    <block type="lists_repeat">
+      <value name="NUM">
+        <block type="math_number">
+          <field name="NUM">5</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_length"></block>
+    <block type="lists_isEmpty"></block>
+    <block type="lists_indexOf">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">list</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">list</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_setIndex">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">list</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">list</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="Colour">
+    <block type="colour_picker"></block>
+    <block type="colour_random"></block>
+    <block type="colour_rgb">
+      <value name="RED">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+      <value name="GREEN">
+        <block type="math_number">
+          <field name="NUM">50</field>
+        </block>
+      </value>
+      <value name="BLUE">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
+    <block type="colour_blend">
+      <value name="COLOUR1">
+        <block type="colour_picker">
+          <field name="COLOUR">#ff0000</field>
+        </block>
+      </value>
+      <value name="COLOUR2">
+        <block type="colour_picker">
+          <field name="COLOUR">#3333ff</field>
+        </block>
+      </value>
+      <value name="RATIO">
+        <block type="math_number">
+          <field name="NUM">0.5</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="Variables" custom="VARIABLE"></category>
+  <category name="Functions" custom="PROCEDURE"></category>
+</xml>
+{/template}
+
+
+/**
+ * Readonly Blockly in an iframe.
+ */
+{template .readonly}
+  {call .messages /}
+  <div id="blockly"></div>
+{/template}
